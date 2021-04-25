@@ -1,3 +1,41 @@
-<p>
-  accommodations works!
-</p>
+<div>
+  <div *ngIf="!accommodationSelected">
+    <app-title [title]="title">
+    </app-title>
+  
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Acomodação</th>
+              <th scope="col">Estado da Acomodação</th>
+              <th scope="col">PetId</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let accommodation of accommodations" style="cursor: pointer;" 
+            >
+              <th scope="row">{{accommodation.id}}</th>
+              <td>{{accommodation.nomeAccommodation}}</td>
+              <td>{{accommodation.status}}</td>
+              <td>{{accommodation.petId}}</td>
+             
+            </tr>
+          </tbody>
+      </table>
+  </div>
+  
+</div>
+
+
+<ng-template #template>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Modal</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  This is a modal.
+</div>
+</ng-template>

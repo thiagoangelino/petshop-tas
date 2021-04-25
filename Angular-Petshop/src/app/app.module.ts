@@ -19,9 +19,6 @@ import { TitleComponent } from './components/title/title.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AlunosComponent } from './components/alunos/alunos.component';
-import { ProfessoresComponent } from './components/professores/professores.component';
-import { TituloComponent } from './titulo/titulo.component';
 
 @NgModule({
   declarations: [		
@@ -30,10 +27,7 @@ import { TituloComponent } from './titulo/titulo.component';
       AccommodationsComponent,
       HomeComponent,
       NavComponent,
-      TitleComponent,
-      AlunosComponent,
-      ProfessoresComponent,
-      TituloComponent
+      TitleComponent
    ],
   imports: [
     BrowserModule,
