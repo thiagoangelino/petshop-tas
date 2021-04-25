@@ -7,17 +7,19 @@ import { PetComponent } from './pet/pet.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { TitleComponent } from './title/title.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [			
     AppComponent,
-      PetComponent,
-      AccommodationComponent,
-      TitleComponent
-   ],
+    PetComponent,
+    AccommodationComponent,
+    TitleComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule
   ],
