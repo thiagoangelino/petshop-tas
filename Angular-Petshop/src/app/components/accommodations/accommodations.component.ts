@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Accommodation } from 'src/app/models/Accommodation';
 import { AccommodationsService } from './accommodations.service';
@@ -11,13 +11,24 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AccommodationsComponent implements OnInit {
 
-  public title = 'Alojamentos'
+  
   public accommodationSelected: Accommodation;
   public accommodationForm: FormGroup;
   public modalRef: BsModalRef;
   public mode: string;
+  public modeGetAcm: string;
+
+  @Input() stateAcm = 3; // 0 - free | 1 - busy | 2 - waiting | bigger than 2 - indeterminate
 
   @Input() petIdSelected: number;
+
+  @Input() title = 'Alojamentos'
+
+  @Output() newItemEvent = new EventEmitter<string>();
+  
+  acoommodationSelected(value: string) {
+    this.newItemEvent.emit(value);
+  } 
 
   public accommodations: Accommodation[];
 
@@ -34,22 +45,35 @@ export class AccommodationsComponent implements OnInit {
   }
 
   loadAccommodations(){
-    this.accommodationService.getAll().subscribe(
-    (accommodations: Accommodation[]) => {
-      this.accommodations = accommodations;
-    },
-    (error: any) => {console.error(error);}
-    )
+    if(this.stateAcm < 3){
+      this.accommodationService.getByStatus(this.stateAcm).subscribe(
+        (accommodations: Accommodation[]) => {
+          this.accommodations = accommodations;
+        },
+        (error: any) => {console.error(error);}
+        )
+
+    }
+    else{
+      this.accommodationService.getAll().subscribe(
+        (accommodations: Accommodation[]) => {
+          this.accommodations = accommodations;
+        },
+        (error: any) => {console.error(error);}
+        )
+    }
+    
   }
 
   createForm(){
     this.accommodationForm = this.fb.group({
       id: 0,
-      nomeAccommodation: [''],
-      status: [3, Validators.required],
+      acommodationName: [''],
+      accommodationState: [3, Validators.required],
       petId: [0, Validators.required]      
     });
   }
+
 
   saveAccommodation(accommodation: Accommodation){
     (accommodation.id === 0) ? this.mode = 'post' : this.mode = 'put';
@@ -87,5 +111,6 @@ export class AccommodationsComponent implements OnInit {
   openModal(template: TemplateRef<any>){
     this.modalRef = this.modalService.show(template);
   }
+
 
 }

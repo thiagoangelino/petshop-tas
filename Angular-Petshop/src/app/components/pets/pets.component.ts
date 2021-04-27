@@ -19,12 +19,20 @@ export class PetsComponent implements OnInit {
 
   public pets: Pet[];
 
+  items = ['item1', 'item2', 'item3', 'item4'];
+
+  accommodationSelected(accommodation: number) {
+    this.petSelected.accommodationId = accommodation;
+    console.log(this.petSelected);
+  }
+  
  
   constructor(private fb: FormBuilder,
               private modalService: BsModalService,
               private petService: PetService) {
 
     this.createForm();
+    
   }
 
   ngOnInit() {
@@ -42,19 +50,19 @@ export class PetsComponent implements OnInit {
 
   createForm(){
     this.petForm = this.fb.group({
-      id: 0,
-      name: ['', Validators.required],
-      ownerName: ['', Validators.required],
-      ownerAddress: ['', Validators.required],
-      ownerPhone: ['', Validators.required],
-      cause: [0,Validators.required],
-      HeaulthStatus: [0,Validators.required],
-      accomodationPetId: [0, Validators.required]
+      petId: 0,
+      petName: ['', Validators.required],
+      petOwnerName: ['', Validators.required],
+      petOwnerAddress: ['', Validators.required],
+      petOwnerPhone: ['', Validators.required],
+      petCause: [0,Validators.required],
+      petHeaulthState: [0],
+      accommodationId: [0,Validators.required]
     });
   }
 
   savePet(pet: Pet){
-    (pet.id === 0) ? this.mode = 'post' : this.mode = 'put';
+    (pet.petId === 0) ? this.mode = 'post' : this.mode = 'put';
 
     this.petService[this.mode](pet).subscribe(
       (retorno: Pet) => {
@@ -68,6 +76,11 @@ export class PetsComponent implements OnInit {
   submitPet(){
     this.savePet(this.petForm.value);
     // this.goBack();
+  }
+  savePetSelected(){
+    console.log(this.petSelected);
+    this.savePet(this.petSelected);
+    this.goBack();
   }
 
   selectPet(pet: Pet){

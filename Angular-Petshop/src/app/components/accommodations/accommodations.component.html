@@ -1,9 +1,8 @@
 <div class="container">
-
   <div>
     <div *ngIf="accommodationSelected && petIdSelected">
         
-        <form [formGroup]="accommodationForm" (submit)="submitAccommodation()">
+        <form [formGroup]="accommodationForm">
           
           <div class="form-group row">
             <div class="col-sm-auto">
@@ -22,12 +21,10 @@
               <input type="text" formControlName="id" class="form-control" placeholder="Nome">
             </div>
           </div>
-
-         
-
+          
           <div class="form-group">
             <hr>
-            <button class="btn btn-success" [disabled]="!accommodationForm.valid">Salvar</button>
+            <button (click)="acoommodationSelected(accommodation.id)" class="btn btn-success" [disabled]="!accommodationForm.valid">Salvar</button>
           </div>
         </form>
     </div>
@@ -41,7 +38,7 @@
       <table class="table table-striped">
         <thead>
             <tr>
-              <th scope="col">ID</th>
+              <!-- <th scope="col">ID</th> -->
               <th scope="col">Acomodação</th>
               <th scope="col">Estado da Acomodação</th>
               <th scope="col">PetId</th>
@@ -49,13 +46,18 @@
           </thead>
           <tbody>
             <tr *ngFor="let accommodation of accommodations" 
-                  style="cursor: pointer;" (click)="selectAccommodation(accommodation);">
-            >
-              <th scope="row">{{accommodation.id}}</th>
-              <td>{{accommodation.nomeAccommodation}}</td>
-              <td>{{accommodation.status}}</td>
-              <td>{{accommodation.petId}}</td>
-             
+                  style="cursor: pointer;" (click)="acoommodationSelected(accommodation.id)">          
+              <!-- <th scope="row">{{accommodation.id}}</th> -->
+              <td>{{accommodation.accommodationName}}</td>
+              <td>
+                <container-element [ngSwitch]="accommodation.accommodationState">
+                  <some-element *ngSwitchCase="0">Livre</some-element>  
+                  <some-element *ngSwitchCase="1">Ocupado</some-element>  
+                  <some-element *ngSwitchCase="2">Esperando dono</some-element>              
+                  <some-element *ngSwitchDefault>-</some-element>
+                </container-element>
+            </td>
+              <td>{{accommodation.petId}}</td>             
             </tr>
           </tbody>
       </table>

@@ -1,11 +1,11 @@
 export class Accommodation {
     constructor() {
         this.id = 0;
-        this.name = '';
-        this.state = 0;
+        this.accommodationName = '';
+        this.accommodationState = 0;
     }
 
     id: number;
-    name: string;
-    state: number;
+    accommodationName: string;
+    accommodationState: number;
 }

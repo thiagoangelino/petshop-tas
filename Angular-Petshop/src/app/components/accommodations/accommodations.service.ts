@@ -24,6 +24,10 @@ export class AccommodationsService {
   getById(id: number): Observable<Accommodation>{
     return this.http.get<Accommodation>(`${this.baseUrl}/${id}`);
   }
+
+  getByStatus(state: number): Observable<Accommodation[]>{
+    return this.http.get<Accommodation[]>(`${this.baseUrl}/state/${state}`);
+  }
   
   post(accommodation: Accommodation){
     return this.http.post(`${this.baseUrl}`, accommodation);

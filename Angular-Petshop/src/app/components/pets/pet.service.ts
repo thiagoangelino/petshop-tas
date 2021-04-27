@@ -30,7 +30,7 @@ getAll(): Observable<Pet[]>{
   }
 
   put(pet: Pet){
-    return this.http.put(`${this.baseUrl}/${pet.id}`, pet);
+    return this.http.put(`${this.baseUrl}/${pet.petId}`, pet);
   }
 
   delete(id: number){
