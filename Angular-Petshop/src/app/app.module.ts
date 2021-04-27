@@ -19,6 +19,8 @@ import { TitleComponent } from './components/title/title.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterService } from './components/register/register.service';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [		
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
       AccommodationsComponent,
       HomeComponent,
       NavComponent,
-      TitleComponent
+      TitleComponent,
+      RegisterComponent
    ],
   imports: [
     BrowserModule,

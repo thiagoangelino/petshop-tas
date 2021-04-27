@@ -48,6 +48,22 @@ namespace WebAPI_Petshop.Controllers
             }   
         }
 
+        [HttpGet("state/{accommodationStatus}")]
+        public async Task<IActionResult> GetByAcoommodationStatus(int accommodationStatus){
+            try
+            {
+                var result = await _repo.GetAccommodationAsyncByStatus(accommodationStatus);
+                if(result == null) return NotFound("Acomodação não encontrada.");
+
+                return Ok(result);
+            }
+            catch (System.Exception ex)
+            {
+                
+                return BadRequest($"Erro: {ex.Message}");
+            }   
+        }
+
         [HttpPost]
         public async Task<IActionResult> post(Accommodation model){
             try

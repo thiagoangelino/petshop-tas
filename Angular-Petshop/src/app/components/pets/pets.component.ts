@@ -48,7 +48,7 @@ export class PetsComponent implements OnInit {
       ownerAddress: ['', Validators.required],
       ownerPhone: ['', Validators.required],
       cause: [0,Validators.required],
-      hState: [0,Validators.required],
+      HeaulthStatus: [0,Validators.required],
       accomodationPetId: [0, Validators.required]
     });
   }
@@ -67,12 +67,12 @@ export class PetsComponent implements OnInit {
 
   submitPet(){
     this.savePet(this.petForm.value);
-    this.goBack();
+    // this.goBack();
   }
 
   selectPet(pet: Pet){
     this.petSelected = pet;
-    this.petForm.patchValue(pet);    
+    this.petForm.patchValue(pet);  
   }
 
   newPet(){

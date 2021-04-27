@@ -11,12 +11,13 @@ namespace WebAPI_Petshop.Data
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveChangesAsync();
 
-        //ALOJAMENTO
+        //ACCOMMODATION
         Task<Accommodation[]> GetAllAccommodationsAsync();        
         Task<Accommodation> GetAccommodationAsyncById(int accommodationId);
-        //ALOJAMENTO
-        Task<Pet[]> GetAllPetsAsync();        
+        Task<Accommodation[]> GetAccommodationAsyncByStatus(int accommodationId);
+        //PET
+        Task<Pet[]> GetAllPetsAsync();          
         Task<Pet> GetPetAsyncById(int petId);
-         
+        
     }
 }

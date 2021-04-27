@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Accommodation } from 'src/app/models/Accommodation';
 import { AccommodationsService } from './accommodations.service';
@@ -15,7 +15,9 @@ export class AccommodationsComponent implements OnInit {
   public accommodationSelected: Accommodation;
   public accommodationForm: FormGroup;
   public modalRef: BsModalRef;
-  public mode: string; 
+  public mode: string;
+
+  @Input() petIdSelected: number;
 
   public accommodations: Accommodation[];
 
@@ -43,7 +45,7 @@ export class AccommodationsComponent implements OnInit {
   createForm(){
     this.accommodationForm = this.fb.group({
       id: 0,
-      nome: ['', Validators.required],
+      nomeAccommodation: [''],
       status: [3, Validators.required],
       petId: [0, Validators.required]      
     });
@@ -62,8 +64,10 @@ export class AccommodationsComponent implements OnInit {
   }
 
   submitAccommodation(){
+    // this.accommodationForm.get("nomeAccommodation").setValue(this.accommodationSelected, { emitEvent: false });
+    this.accommodationForm.get("petId").setValue(this.petIdSelected, { emitEvent: false });
     this.saveAccommodation(this.accommodationForm.value);
-    this.goBack();
+    // this.goBack();
   }
 
   selectAccommodation(accommodation: Accommodation){

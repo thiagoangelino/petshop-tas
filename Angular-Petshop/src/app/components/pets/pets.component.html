@@ -1,45 +1,52 @@
   <div>
     <div *ngIf="petSelected">
-        <app-title [title]="petSelected.id == 0 ? 'Novo Pet' : 'Cod: ' + petSelected.id">
-          <button class="btn btn-default" (click)="goBack()">Voltar para lista</button>
-        </app-title>
-
-        <form [formGroup]="petForm" (submit)="submitPet()">
-          
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Nome do Pet</label>
-            <input type="text" formControlName="name" class="form-control" placeholder="Nome do Pet">
+      <app-title [title]="petSelected.id == 0 ? 'Novo Pet' : 'Cod: ' + petSelected.id">
+        <button class="btn btn-default" (click)="goBack()">Voltar para lista</button>
+      </app-title>
+      
+      <form [formGroup]="petForm" (submit)="submitPet()">
+        
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Nome do Pet</label>
+          <input type="text" formControlName="name" class="form-control" placeholder="Nome do Pet">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Nome do tutor</label>
+          <input type="text" formControlName="ownerName" class="form-control" placeholder="Nome do tutor">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Endereço do tutor</label>
+          <input type="text" formControlName="ownerAddress" class="form-control" placeholder="Endereço do tutor">
+        </div>          
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Telefone do tutor</label>
+          <input type="text" formControlName="ownerPhone" class="form-control" placeholder="Telefone do tutor">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Motivo da internação</label>
+          <input type="text" formControlName="cause" class="form-control" placeholder="Motivo da internação">
+        </div>
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Estado de saúde</label>
+          <input type="text" formControlName="HeaulthStatus" class="form-control" placeholder="Estado de saúde">
+        </div>
+        <!-- <div class="form-group">
+          <label for="exampleFormControlFile1">Exemplo de input de arquivo</label>
+          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div> -->
+        <div class="form-group row">
+          <div class="col-sm-auto">
+            <button for="exampleInput" (click)="openModal(template)" class="btn btn-outline-primary ">Selecionar Alojamento</button>
           </div>
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Nome do tutor</label>
-            <input type="text" formControlName="ownerName" class="form-control" placeholder="Nome do Pet">
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="inputPassword" placeholder="Alojamento">
           </div>
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Endereço do tutor</label>
-            <input type="text" formControlName="ownerAddress" class="form-control" placeholder="Nome do Pet">
-          </div>          
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Telefone do tutor</label>
-            <input type="text" formControlName="ownerPhone" class="form-control" placeholder="Nome do Pet">
-          </div>
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Motivo da internação</label>
-            <input type="text" formControlName="cause" class="form-control" placeholder="Nome do Pet">
-          </div>
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Estado de saúde</label>
-            <input type="text" formControlName="hState" class="form-control" placeholder="Nome do Pet">
-          </div>
-          <div class="form-group">
-            <label for="exampleInput" class="form-label">Alojamento de internação</label>
-            <input type="text" formControlName="accomodationPetId" class="form-control" placeholder="Nome do Pet">
-          </div>
-            
-          <div class="form-group">
-            <hr>
-            <button class="btn btn-success" [disabled]="!petForm.valid">Salvar</button>
-          </div>
-        </form>
+        </div>
+        <div class="form-group">
+          <hr>
+          <button class="btn btn-success" [disabled]="!petForm.valid">Salvar</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -48,54 +55,52 @@
       <app-title [title]="title">
         <button class="btn btn-success" (click)="newPet()">Cadastrar Pet</button>
       </app-title>
-    
+      
       <table class="table table-striped">
-          <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome do Pet</th>
-                <th scope="col">Tutor do Pet</th>
-                <th scope="col">Endereço do tutor</th>
-                <th scope="col">Telefone do tutor</th>
-                <th scope="col">Causa da internação</th>
-                <th scope="col">Estado de saúde</th>
-                <th scope="col">Acomodação</th>
-                <th scope="col">Opções</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let pet of pets" style="cursor: pointer;" 
-              >
-                <th scope="row">{{pet.id}}</th>
-                <td>{{pet.name}}</td>
-                <td>{{pet.ownerName}}</td>
-                <td>{{pet.ownerAddress}}</td>
-                <td>{{pet.ownerPhone}}</td>
-                <td>{{pet.cause}}</td>
-                <td>{{pet.hState}}</td>
-                <td>{{pet.accomodationPetId}}</td>
-                <td>
-                  <div class="btn-group">
-                    <button (click)="openModal(template)" class="btn btn-sm btn-outline-primary">Alunos</button>
-                    <button (click)="selectPet(pet)" class="btn btn-sm btn-outline-danger">Editar</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-        </table>
-    </div>
-    
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome do Pet</th>
+            <th scope="col">Tutor do Pet</th>
+            <th scope="col">Endereço do tutor</th>
+            <th scope="col">Telefone do tutor</th>
+            <th scope="col">Causa da internação</th>
+            <th scope="col">Estado de saúde</th>
+            <th scope="col">Acomodação</th>
+            <th scope="col">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of pets" style="cursor: pointer;" 
+          >
+          <th scope="row">{{pet.id}}</th>
+          <td>{{pet.name}}</td>
+          <td>{{pet.ownerName}}</td>
+          <td>{{pet.ownerAddress}}</td>
+          <td>{{pet.ownerPhone}}</td>
+          <td>{{pet.cause}}</td>
+          <td>{{pet.HeaulthStatus}}</td>
+          <td>{{pet.accommodationPetId}}</td>
+          <td>
+            <div class="btn-group">
+              <button (click)="openModal(template)" class="btn btn-sm btn-outline-primary">Alunos</button>
+              <button (click)="selectPet(pet)" class="btn btn-sm btn-outline-danger">Editar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-
+  </div>
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Selecione o Alojamento</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    This is a modal.
+    <app-accommodations [petIdSelected]="petSelected.id"></app-accommodations>
   </div>
 </ng-template>

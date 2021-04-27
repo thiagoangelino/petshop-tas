@@ -1,9 +1,44 @@
-<div>
-  <div *ngIf="!accommodationSelected">
+<div class="container">
+
+  <div>
+    <div *ngIf="accommodationSelected && petIdSelected">
+        
+        <form [formGroup]="accommodationForm" (submit)="submitAccommodation()">
+          
+          <div class="form-group row">
+            <div class="col-sm-auto">
+              <label for="exampleInput" class="form-label">Pet Id</label>
+              </div>
+            <div class="col-sm-auto">
+              <input type="text" formControlName="petId" class="form-control" placeholder="Nome">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-auto">
+              <label for="exampleInput" class="form-label">Alojamento</label>
+              </div>
+            <div class="col-sm-auto">
+              <input type="text" formControlName="id" class="form-control" placeholder="Nome">
+            </div>
+          </div>
+
+         
+
+          <div class="form-group">
+            <hr>
+            <button class="btn btn-success" [disabled]="!accommodationForm.valid">Salvar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div *ngIf="!accommodationSelected || !petIdSelected">
     <app-title [title]="title">
     </app-title>
-  
-    <table class="table table-striped">
+
+    <div>
+      <table class="table table-striped">
         <thead>
             <tr>
               <th scope="col">ID</th>
@@ -13,7 +48,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let accommodation of accommodations" style="cursor: pointer;" 
+            <tr *ngFor="let accommodation of accommodations" 
+                  style="cursor: pointer;" (click)="selectAccommodation(accommodation);">
             >
               <th scope="row">{{accommodation.id}}</th>
               <td>{{accommodation.nomeAccommodation}}</td>
@@ -23,19 +59,9 @@
             </tr>
           </tbody>
       </table>
+    </div>
+    
+
   </div>
   
 </div>
-
-
-<ng-template #template>
-<div class="modal-header">
-  <h4 class="modal-title pull-left">Modal</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  This is a modal.
-</div>
-</ng-template>

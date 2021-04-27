@@ -1,10 +1,12 @@
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WebAPI_Petshop.Models;
 
 namespace WebAPI_Petshop.Data
 {
+    
     public class Repository : IRepository
     {
         private readonly DataContext _context;
@@ -38,13 +40,24 @@ namespace WebAPI_Petshop.Data
 
             return await query.FirstOrDefaultAsync();
         }
+        public async Task<Accommodation[]> GetAccommodationAsyncByStatus(int accommodationStatus)
+        {
+            IQueryable<Accommodation> query = _context.Accommodations;
+            
+
+            query = query.AsNoTracking()
+                         .Where(acm => acm.AccommodationState == accommodationStatus);
+
+            return await query.ToArrayAsync();
+        }
+
         public async Task<Pet> GetPetAsyncById(int petId)
         {
             IQueryable<Pet> query = _context.Pets;
 
             query = query.AsNoTracking()
-                         .OrderBy(pet => pet.Id)
-                         .Where(pet => pet.Id == petId);
+                         .OrderBy(pet => pet.PetId)
+                         .Where(pet => pet.PetId == petId);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -62,16 +75,14 @@ namespace WebAPI_Petshop.Data
         {
             IQueryable<Pet> query = _context.Pets;
 
-            query = query.AsNoTracking().OrderBy(c => c.Id);
+            query = query.AsNoTracking().OrderBy(c => c.PetId);
 
             return await query.ToArrayAsync();
         }
 
-        
         public async Task<bool> SaveChangesAsync()
         {
             return(await _context.SaveChangesAsync()) > 0;
         }
-
     }
 }

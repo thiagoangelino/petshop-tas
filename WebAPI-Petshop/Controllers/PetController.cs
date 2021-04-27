@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_Petshop.Data;
@@ -65,16 +66,36 @@ namespace WebAPI_Petshop.Controllers
         }
 
         [HttpPut("{petId}")]
-        public async Task<IActionResult> put(int petId, Pet model){
+        public async Task<IActionResult> put(int petId, Pet petUpdate){
             try
         {
             var pet = await _repo.GetPetAsyncById(petId);
             if(pet == null) return NotFound("Pet não encontrado.");
-           
-           _repo.Update(model);
+
+            Pet petOld = await  _repo.GetPetAsyncById(petUpdate.PetId);
+
+            int acmIdOld  = petOld.AccommodationId;
+            int acmIdNew = petUpdate.AccommodationId;
+
+            //ACCOMODATION CHECK
+            //check if accommodation has changed
+            if(acmIdNew != acmIdOld){
+                //reset state to old accommodation ( free - value 0)
+                await SetAccommodationValuesAsync(acmIdOld, 0, 0);
+                //set state to new accommodation (busy - value 1)
+                await SetAccommodationValuesAsync(acmIdNew, 1, petId);
+            }
+            //check if health condition has changed and check if new health condition is "recovered" (value 2)
+            if(petUpdate.PetHeaulthState != petOld.PetHeaulthState && petUpdate.PetHeaulthState == 2){
+                //set accommodation state to "waiting owner" ( value 2)
+                await SetAccommodationValuesAsync(petUpdate.AccommodationId, 2, petId);
+            }
+
+            //update pet
+           _repo.Update(petUpdate);
 
            if(await _repo.SaveChangesAsync()){
-               return Ok(model);
+               return Ok(petUpdate);
            }
         }
         catch (System.Exception ex)
@@ -83,6 +104,19 @@ namespace WebAPI_Petshop.Controllers
             return BadRequest($"Erro: {ex.Message}");
         }   
         return BadRequest("Erro não esperado!");
+        }
+
+        public async Task SetAccommodationValuesAsync(int id, int newState,  int newPetId){
+                Accommodation accommodationUpdate = await _repo.GetAccommodationAsyncById(id);
+                accommodationUpdate.AccommodationState = newState;
+                accommodationUpdate.PetId = newPetId;      
+                
+                _repo.Update(accommodationUpdate);
+            }
+        public async Task SetPetIdToAccommodationAsync(int id, int newPetId){
+            Accommodation accommodationUpdate = await _repo.GetAccommodationAsyncById(id);
+            accommodationUpdate.AccommodationState = newPetId;
+            _repo.Update(accommodationUpdate);
         }
 
         [HttpDelete("{petId}")]
