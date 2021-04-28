@@ -40,7 +40,7 @@ Para executar o front-end, abra o terminal de comandos na pasta ~/Angular-Petsho
 ng serve
 <br><br>
 
-A aplicação está em execução.
+Para acessar a aplicação, acesse http://localhost:4200/ em um navegador Web de sua escolha.
     
     
     
