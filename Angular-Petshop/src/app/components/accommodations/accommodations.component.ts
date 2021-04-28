@@ -44,6 +44,11 @@ export class AccommodationsComponent implements OnInit {
     this.loadAccommodations();
   }
 
+  filterAccommodations(filter){
+    this.stateAcm = filter;
+    this.loadAccommodations();
+  }
+
   loadAccommodations(){
     if(this.stateAcm < 3){
       this.accommodationService.getByStatus(this.stateAcm).subscribe(

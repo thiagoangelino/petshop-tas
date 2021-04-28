@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AcmSelectorComponent } from './acm-selector.component';
+import { PetComponent } from './pet.component';
 
-describe('AcmSelectorComponent', () => {
-  let component: AcmSelectorComponent;
-  let fixture: ComponentFixture<AcmSelectorComponent>;
+describe('PetComponent', () => {
+  let component: PetComponent;
+  let fixture: ComponentFixture<PetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AcmSelectorComponent ]
+      declarations: [ PetComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AcmSelectorComponent);
+    fixture = TestBed.createComponent(PetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

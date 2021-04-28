@@ -1,11 +1,12 @@
-using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_Petshop.Data;
 using WebAPI_Petshop.Models;
 
 namespace WebAPI_Petshop.Controllers
 {
+    
     [ApiController]
     [Route("api/[controller]")]
     public class PetController : ControllerBase

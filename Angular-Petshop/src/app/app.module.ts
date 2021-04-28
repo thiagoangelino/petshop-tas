@@ -19,6 +19,9 @@ import { TitleComponent } from './components/title/title.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { PetComponent } from './components/pet/pet.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [		
@@ -27,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
       AccommodationsComponent,
       HomeComponent,
       NavComponent,
-      TitleComponent
+      TitleComponent,
+      PetComponent
    ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { HttpClientModule } from '@angular/common/http';
     ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
