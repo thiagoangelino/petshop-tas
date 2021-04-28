@@ -1,4 +1,4 @@
-# petshop-atlantico-tas
+# Petshop Atlântico
 Front-end: Angular/ Back-end: dotNet Core (3.1)
 
 Para executar o projeto, você deverá ter instalado:
