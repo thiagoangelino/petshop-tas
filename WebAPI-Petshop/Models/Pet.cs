@@ -3,25 +3,27 @@ namespace WebAPI_Petshop.Models
     public class Pet
     {
         public Pet(){}
-        public Pet(int id, string name, string ownerName, string ownerAddress, string ownerPhone, string cause, int heaulthStatus, int accommodationPetId)
+        public Pet(int petId, string petName, string petOwnerName, 
+                    string petOwnerAddress, string petOwnerPhone, string petCause, 
+                    int petHeaulthStatus, int accommodationId)
         {
-            this.Id = id;
-            this.Name = name;
-            this.OwnerName = ownerName;
-            this.OwnerAddress = ownerAddress;
-            this.OwnerPhone = ownerPhone;
-            this.Cause = cause;
-            this.HeaulthStatus = heaulthStatus;
-            this.AccommodationPetId = accommodationPetId;
+            this.PetId = petId;
+            this.PetName = petName;
+            this.PetOwnerName = petOwnerName;
+            this.PetOwnerAddress = petOwnerAddress;
+            this.PetOwnerPhone = petOwnerPhone;
+            this.PetCause = petCause;
+            this.PetHeaulthState = petHeaulthStatus;
+            this.AccommodationId = accommodationId;
 
         }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string OwnerName { get; set; }
-        public string OwnerAddress { get; set; }
-        public string OwnerPhone { get; set; }
-        public string Cause { get; set; }
-        public int HeaulthStatus { get; set; }
-        public int AccommodationPetId { get; set; }
+        public int PetId { get; set; }
+        public string PetName { get; set; }
+        public string PetOwnerName { get; set; }
+        public string PetOwnerAddress { get; set; }
+        public string PetOwnerPhone { get; set; }
+        public string PetCause { get; set; }
+        public int PetHeaulthState { get; set; }
+        public int AccommodationId { get; set; }
     }
 }

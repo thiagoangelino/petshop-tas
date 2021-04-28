@@ -21,13 +21,13 @@ namespace WebAPI_Petshop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("NomeAccommodation")
+                    b.Property<string>("AccommodationName")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PetId")
+                    b.Property<int>("AccommodationState")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("PetId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -38,139 +38,139 @@ namespace WebAPI_Petshop.Migrations
                         new
                         {
                             Id = 1,
-                            NomeAccommodation = "Acomodação 1",
-                            PetId = 2,
-                            Status = 0
+                            AccommodationName = "Acomodação 1",
+                            AccommodationState = 0,
+                            PetId = 2
                         },
                         new
                         {
                             Id = 2,
-                            NomeAccommodation = "Acomodação 2",
-                            PetId = 3,
-                            Status = 0
+                            AccommodationName = "Acomodação 2",
+                            AccommodationState = 0,
+                            PetId = 3
                         },
                         new
                         {
                             Id = 3,
-                            NomeAccommodation = "Acomodação 3",
-                            PetId = 1,
-                            Status = 0
+                            AccommodationName = "Acomodação 3",
+                            AccommodationState = 0,
+                            PetId = 1
                         },
                         new
                         {
                             Id = 4,
-                            NomeAccommodation = "Acomodação 4",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 4",
+                            AccommodationState = 0,
+                            PetId = 0
                         },
                         new
                         {
                             Id = 5,
-                            NomeAccommodation = "Acomodação 5",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 5",
+                            AccommodationState = 0,
+                            PetId = 0
                         },
                         new
                         {
                             Id = 6,
-                            NomeAccommodation = "Acomodação 6",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 6",
+                            AccommodationState = 0,
+                            PetId = 0
                         },
                         new
                         {
                             Id = 7,
-                            NomeAccommodation = "Acomodação 7",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 7",
+                            AccommodationState = 0,
+                            PetId = 0
                         },
                         new
                         {
                             Id = 8,
-                            NomeAccommodation = "Acomodação 8",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 8",
+                            AccommodationState = 0,
+                            PetId = 0
                         },
                         new
                         {
                             Id = 9,
-                            NomeAccommodation = "Acomodação 9",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 9",
+                            AccommodationState = 0,
+                            PetId = 0
                         },
                         new
                         {
                             Id = 10,
-                            NomeAccommodation = "Acomodação 10",
-                            PetId = 0,
-                            Status = 0
+                            AccommodationName = "Acomodação 10",
+                            AccommodationState = 0,
+                            PetId = 0
                         });
                 });
 
             modelBuilder.Entity("WebAPI_Petshop.Models.Pet", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AccommodationPetId")
+                    b.Property<int>("AccommodationId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Cause")
+                    b.Property<string>("PetCause")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("HeaulthStatus")
+                    b.Property<int>("PetHeaulthState")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("PetName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("OwnerAddress")
+                    b.Property<string>("PetOwnerAddress")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("OwnerName")
+                    b.Property<string>("PetOwnerName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("OwnerPhone")
+                    b.Property<string>("PetOwnerPhone")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("PetId");
 
                     b.ToTable("Pets");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            AccommodationPetId = 3,
-                            Cause = "Febre canina",
-                            HeaulthStatus = 0,
-                            Name = "Bethoven",
-                            OwnerAddress = "Av. dos Pets, 1234",
-                            OwnerName = "Antônio Vasconcelos",
-                            OwnerPhone = "85912345678"
+                            PetId = 1,
+                            AccommodationId = 3,
+                            PetCause = "Febre canina",
+                            PetHeaulthState = 0,
+                            PetName = "Bethoven",
+                            PetOwnerAddress = "Av. dos Pets, 1234",
+                            PetOwnerName = "Antônio Vasconcelos",
+                            PetOwnerPhone = "85912345678"
                         },
                         new
                         {
-                            Id = 2,
-                            AccommodationPetId = 1,
-                            Cause = "Incômodo na coluna vertebral",
-                            HeaulthStatus = 0,
-                            Name = "Yoda",
-                            OwnerAddress = "Av. dos Jedi, s/n",
-                            OwnerName = "Anakim",
-                            OwnerPhone = "85901101010"
+                            PetId = 2,
+                            AccommodationId = 1,
+                            PetCause = "Incômodo na coluna vertebral",
+                            PetHeaulthState = 0,
+                            PetName = "Yoda",
+                            PetOwnerAddress = "Av. dos Jedi, s/n",
+                            PetOwnerName = "Anakim",
+                            PetOwnerPhone = "85901101010"
                         },
                         new
                         {
-                            Id = 3,
-                            AccommodationPetId = 2,
-                            Cause = "Perda de visão no olho",
-                            HeaulthStatus = 0,
-                            Name = "Dalek",
-                            OwnerAddress = "Av. Tardis, 987",
-                            OwnerName = "Dora Holanda",
-                            OwnerPhone = "85543215678"
+                            PetId = 3,
+                            AccommodationId = 2,
+                            PetCause = "Perda de visão no olho",
+                            PetHeaulthState = 0,
+                            PetName = "Dalek",
+                            PetOwnerAddress = "Av. Tardis, 987",
+                            PetOwnerName = "Dora Holanda",
+                            PetOwnerPhone = "85543215678"
                         });
                 });
 #pragma warning restore 612, 618

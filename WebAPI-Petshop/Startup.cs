@@ -21,6 +21,7 @@ namespace WebAPI_Petshop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<DataContext>(
                 t => t.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
@@ -43,11 +44,9 @@ namespace WebAPI_Petshop
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI_Petshop v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

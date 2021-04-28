@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_Petshop.Data;
 using WebAPI_Petshop.Models;
 
 namespace WebAPI_Petshop.Controllers
 {
+    
     [ApiController]
     [Route("api/[controller]")]
     public class AccommodationController : ControllerBase
@@ -35,6 +37,22 @@ namespace WebAPI_Petshop.Controllers
             try
             {
                 var result = await _repo.GetAccommodationAsyncById(acoommodationId);
+                if(result == null) return NotFound("Acomodação não encontrada.");
+
+                return Ok(result);
+            }
+            catch (System.Exception ex)
+            {
+                
+                return BadRequest($"Erro: {ex.Message}");
+            }   
+        }
+
+        [HttpGet("state/{accommodationStatus}")]
+        public async Task<IActionResult> GetByAcoommodationStatus(int accommodationStatus){
+            try
+            {
+                var result = await _repo.GetAccommodationAsyncByStatus(accommodationStatus);
                 if(result == null) return NotFound("Acomodação não encontrada.");
 
                 return Ok(result);

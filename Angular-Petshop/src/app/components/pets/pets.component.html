@@ -1,0 +1,172 @@
+ 
+ <div class="container-fluid">
+  <div *ngIf="petSelected">
+    
+    <app-title [title]="petSelected.petId == 0 ? 'Novo Pet' : 'Cod: ' + petSelected.petId">
+      <button class="btn btn-default" (click)="goBack()">Voltar para lista</button>
+    </app-title>
+    
+    <form [formGroup]="petForm">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            
+            <div class="form-group">
+              <label for="exampleInput" class="form-label">Nome do Pet</label>
+              <input type="text"  formControlName="petName" class="form-control" placeholder="Nome do Pet">
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInput" class="form-label">Endereço</label>
+              <input type="text" formControlName="petOwnerAddress" class="form-control" placeholder="Endereço do tutor">
+            </div>
+            
+          </div>
+          <div class="col-sm">
+            
+            <div class="form-group">
+              <label for="exampleInput" class="form-label">Tutor</label>
+              <input type="text" formControlName="petOwnerName" class="form-control" placeholder="Nome do tutor">
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInput" class="form-label">Telefone</label>
+              <input type="text" formControlName="petOwnerPhone" class="form-control" placeholder="Telefone do tutor">
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleInput" class="form-label">Motivo da internação</label>
+          <input type="text" formControlName="petCause" class="form-control" placeholder="Motivo da internação">
+        </div>
+        
+        <div class="row">
+          <div class="col-sm">
+            
+            <h4>Estado de saúde</h4>
+            
+            <div class="custom-control custom-radio" (click)="petForm.value.petHeaulthState = 0">
+              <input [checked]="petSelected.petHeaulthState == 0" type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio1">Em tratamento</label>
+            </div>
+            <div class="custom-control custom-radio" (click)="petForm.value.petHeaulthState = 1">
+              <input [checked]="petSelected.petHeaulthState == 1" type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">Recuperando-se</label>
+            </div>
+            <div class="custom-control custom-radio" (click)="petForm.value.petHeaulthState = 2">
+              <input [checked]="petSelected.petHeaulthState == 2" type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio3">Recuperado</label>
+            </div>
+            
+          </div>
+          <div class="col-sm">
+            
+            <button for="exampleInput" (click)="openModal(template)" 
+            class="btn btn-outline-primary col-sm">Selecionar Acomodação</button>
+            <br><br>
+            <input [disabled]="true" *ngIf="accommodationIdSelected" type="text" class="form-control col-sm" placeholder="Alojamento" 
+            value="Acomodação selecionada: {{accommodationIdSelected}}">             
+            
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row justify-content-between">
+            <button class="btn btn-success col align-self-end" [disabled]="!petForm.valid" 
+            (click)="savePet(petForm.value)">
+            Salvar</button>
+          </div>
+        </div>  
+        
+        
+        
+        
+      </div>
+      
+    </form>
+  </div>
+</div>
+<br>
+<div>
+  <div *ngIf="!petSelected">
+    <app-title [title]="title">
+      <nav class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" name="search" placeholder="Pesquisar" [(ngModel)]="filter" />
+        <button class="btn btn-outline-success" (click)="newPet()">Cadastrar Pet</button>
+      </nav>      
+    </app-title>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Tutor</th>
+          <th scope="col">Causa da internação</th>
+          <th scope="col">Estado de saúde</th>
+          <th scope="col">Acomodação</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pet of pets | filter:filter; let i = index" style="cursor: pointer;" 
+        >
+        <th scope="row">{{pet.petId}}</th>
+        <td>{{pet.petName}}</td>
+        <td>{{pet.petOwnerName}}</td>
+        <td>{{pet.petCause}}</td>
+        <td>            
+          <container-element [ngSwitch]="pet.petHeaulthState">
+            <some-element *ngSwitchCase="0">Em tratamento</some-element>  
+            <some-element *ngSwitchCase="1">Em recuperação</some-element>  
+            <some-element *ngSwitchCase="2">Recuperado</some-element>              
+            <some-element *ngSwitchDefault>-</some-element>
+          </container-element>
+        </td>
+        <td>{{pet.accommodationId}}</td>
+        <td>
+          <div class="btn-group">
+            <button (click)="openModal(infoPet)" class="btn btn-sm btn-outline-success">Info</button>
+            <button (click)="selectPet(pet)" class="btn btn-sm btn-outline-primary">Editar</button>
+            <button (click)=" petToRemove = pet.petId; openModalConfirm(modalConfirm)" 
+                              class="btn btn-sm btn-outline-danger">Excluir</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Selecionar o Alojamento</h4>
+  </div>
+  <div class="modal-body">
+    <app-accommodations [petIdSelected]="petSelected.petId"
+    [stateAcm]="0"
+    [title]="''"
+    (newItemEvent)="accommodationSelected($event)">    
+  </app-accommodations>
+  <input [disabled]="true" *ngIf="accommodationIdSelected" type="text" class="form-control" placeholder="Alojamento" 
+  value="Acomodação selecionada: {{accommodationIdSelected}}">
+  <button class="btn btn-success form-control" *ngIf="accommodationIdSelected" 
+  (click)="modalRef.hide()"> Confirmar
+</button>
+</div>
+</ng-template>
+
+<ng-template #modalConfirm>
+  <div class="modal-body text-center">
+    <p>Confirma exclusão?</p>
+    <button type="button" class="btn btn-default" (click)="confirmDelete()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>
+
+<ng-template #infoPet>
+    <app-pet></app-pet>  
+</ng-template>
