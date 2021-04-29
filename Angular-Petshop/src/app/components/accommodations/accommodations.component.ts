@@ -22,7 +22,9 @@ export class AccommodationsComponent implements OnInit {
 
   @Input() petIdSelected: number;
 
-  @Input() title = 'Alojamentos'
+  @Input() title = 'Alojamentos';
+
+  @Input() filterVisibility = 1;
 
   @Output() newItemEvent = new EventEmitter<string>();
   

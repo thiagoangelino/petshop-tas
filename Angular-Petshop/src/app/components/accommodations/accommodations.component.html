@@ -1,38 +1,8 @@
 <div class="container">
-  <div>
-    <!-- <div *ngIf="accommodationSelected && petIdSelected">
-      
-      <form [formGroup]="accommodationForm">
-        
-        <div class="form-group row">
-          <div class="col-sm-auto">
-            <label for="exampleInput" class="form-label">Pet Id</label>
-          </div>
-          <div class="col-sm-auto">
-            <input type="text" formControlName="petId" class="form-control" placeholder="Nome">
-          </div>
-        </div>
-        
-        <div class="form-group row">
-          <div class="col-sm-auto">
-            <label for="exampleInput" class="form-label">Alojamento</label>
-          </div>
-          <div class="col-sm-auto">
-            <input type="text" formControlName="id" class="form-control" placeholder="Nome">
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <hr>
-          <button (click)="acoommodationSelected(accommodation.id)" class="btn btn-success" [disabled]="!accommodationForm.valid">Salvar</button>
-        </div>
-      </form>
-    </div> -->
-  </div>
   <br>
   <div >
     <app-title [title]="title"> 
-      <div class="btn-group" *ngIf="!petIdSelected">
+      <div class="btn-group" *ngIf="filterVisibility">
         <label class="btn btn-success"  (click)="filterAccommodations(3)"
         uncheckable tabindex="0" role="button">Todos</label>
         <label class="btn btn-info"  (click)="filterAccommodations(0)"

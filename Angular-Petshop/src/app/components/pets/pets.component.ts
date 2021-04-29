@@ -20,6 +20,8 @@ export class PetsComponent implements OnInit {
   public pets: Pet[];
   
   @Input() petToRemove: number;
+  @Input() petToEdit: number;
+  @Input() petAcmId: number;
 
   items = ['item1', 'item2', 'item3', 'item4'];
 
@@ -51,7 +53,7 @@ export class PetsComponent implements OnInit {
 
   createForm(){
     this.petForm = this.fb.group({
-      petId: '',
+      petId: 0,
       petName: ['', Validators.required],
       petOwnerName: ['', Validators.required],
       petOwnerAddress: ['', Validators.required],
@@ -66,6 +68,9 @@ export class PetsComponent implements OnInit {
     
     (pet.petId === 0) ? this.mode = 'post' : this.mode = 'put';
 
+    
+    pet.accommodationId = this.accommodationIdSelected;
+    pet.petId = this.petToEdit;
     pet.accommodationId = this.accommodationIdSelected;
 
 
@@ -86,7 +91,10 @@ export class PetsComponent implements OnInit {
   }
   
   selectPet(pet: Pet){
+
     this.petSelected = pet;
+    this.petToEdit = pet.petId;
+    this.accommodationIdSelected = pet.accommodationId;
     this.petForm.patchValue(pet);
   }
 
@@ -109,6 +117,7 @@ export class PetsComponent implements OnInit {
 
   goBack(){
     this.petSelected = null;
+    this.accommodationIdSelected = null;
   }
 
   openModal(template: TemplateRef<any>, pet: Pet){
@@ -126,5 +135,9 @@ export class PetsComponent implements OnInit {
  
   decline(): void {
     this.modalRef.hide();
+  }
+
+  log(msg){
+    console.log(msg)
   }
 }

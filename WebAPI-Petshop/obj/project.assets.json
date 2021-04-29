@@ -1371,11 +1371,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\WebAPI-Petshop.csproj",
+      "projectUniqueName": "C:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\WebAPI-Petshop.csproj",
       "projectName": "WebAPI-Petshop",
-      "projectPath": "c:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\WebAPI-Petshop.csproj",
+      "projectPath": "C:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\WebAPI-Petshop.csproj",
       "packagesPath": "C:\\Users\\thiag\\.nuget\\packages\\",
-      "outputPath": "c:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\obj\\",
+      "outputPath": "C:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
