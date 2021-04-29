@@ -74,6 +74,10 @@
               "target": "Package",
               "version": "[16.9.4, )"
             },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.12.1, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[1.3.0, )"

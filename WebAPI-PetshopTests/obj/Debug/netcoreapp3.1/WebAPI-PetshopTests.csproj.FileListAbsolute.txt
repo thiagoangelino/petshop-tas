@@ -152,3 +152,5 @@ C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-PetshopTests\obj\Debug\netcorea
 C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-PetshopTests\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-PetshopTests\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-PetshopTests\bin\Debug\netcoreapp3.1\System.Net.Http.WebRequest.dll
+C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-PetshopTests\bin\Debug\netcoreapp3.1\Elasticsearch.Net.dll
+C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-PetshopTests\bin\Debug\netcoreapp3.1\Nest.dll
