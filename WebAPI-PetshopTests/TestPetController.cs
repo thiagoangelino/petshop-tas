@@ -1,15 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Nest;
 using WebAPI_Petshop.Controllers;
 using WebAPI_Petshop.Data;
 using WebAPI_Petshop.Models;
-using Xunit;
 
 namespace WebAPI_PetshopTests
 {
