@@ -130,3 +130,4 @@ C:\Users\thiag\source\repos\WebAPI-Petshop\WebAPI-Petshop\obj\Debug\netcoreapp3.
 C:\Users\thiag\source\repos\WebAPI-Petshop\WebAPI-Petshop\obj\Debug\netcoreapp3.1\WebAPI-Petshop.dll
 C:\Users\thiag\source\repos\WebAPI-Petshop\WebAPI-Petshop\obj\Debug\netcoreapp3.1\WebAPI-Petshop.pdb
 C:\Users\thiag\source\repos\WebAPI-Petshop\WebAPI-Petshop\obj\Debug\netcoreapp3.1\WebAPI-Petshop.genruntimeconfig.cache
+C:\Arquivos\Dev\dotNET\Petshop Atlântico\WebAPI-Petshop\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll

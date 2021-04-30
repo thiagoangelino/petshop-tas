@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w5omTjHdWLrof8KKsJzQSC8jrERAjWo36iKZ+eSFfKHk94UlgvoMNkyfq7P6LHmrjNZuh/+q86xv3fNkbzIAhg==",
+  "dgSpecHash": "bGVskUKQtkOmY8afT201uS4JLRWMeFjNpYU6J3HUBB7YxeFbMAlufPiswKQzTR7jIHUwuRVAeqhlJ+sEvs2Geg==",
   "success": true,
   "projectFilePath": "C:\\Arquivos\\Dev\\dotNET\\Petshop Atlântico\\WebAPI-Petshop\\WebAPI-Petshop.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.5\\microsoft.entityframeworkcore.abstractions.5.0.5.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.5\\microsoft.entityframeworkcore.analyzers.5.0.5.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.5\\microsoft.entityframeworkcore.design.5.0.5.nupkg.sha512",
+    "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.5\\microsoft.entityframeworkcore.inmemory.5.0.5.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.5\\microsoft.entityframeworkcore.relational.5.0.5.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\5.0.5\\microsoft.entityframeworkcore.sqlite.5.0.5.nupkg.sha512",
     "C:\\Users\\thiag\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\5.0.5\\microsoft.entityframeworkcore.sqlite.core.5.0.5.nupkg.sha512",
