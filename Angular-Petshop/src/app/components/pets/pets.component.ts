@@ -74,7 +74,6 @@ export class PetsComponent implements OnInit {
     pet.petId = this.petToEdit;
     pet.accommodationId = this.accommodationIdSelected;
 
-
     this.petService[this.mode](pet).subscribe(
       (retorno: Pet) => {
         console.log(retorno);

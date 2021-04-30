@@ -1,7 +1,7 @@
  
  <div class="container-fluid">
   <div *ngIf="petSelected">
-    
+    <br>
     <app-title [title]="petSelected.petId == 0 ? 'Novo Pet' : 'Cod: ' + petSelected.petId">
       <button class="btn btn-default" (click)="goBack()">Voltar para lista</button>
     </app-title>

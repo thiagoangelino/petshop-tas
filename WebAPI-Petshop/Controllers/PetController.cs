@@ -19,7 +19,7 @@ namespace WebAPI_Petshop.Controllers
             _repo = repo;
         }
 
-        
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -59,6 +59,8 @@ namespace WebAPI_Petshop.Controllers
             try
             {
                 _repo.Add(model);
+                //set state accommodation
+                await SetAccommodationValuesAsync(model.AccommodationId, 1, model.PetId);
 
                 if (await _repo.SaveChangesAsync())
                 {
@@ -88,23 +90,39 @@ namespace WebAPI_Petshop.Controllers
 
                 //ACCOMODATION CHECK
                 //check if accommodation has changed
-                if (acmIdNew != acmIdOld && acmIdNew*acmIdOld !=0)
+                if (acmIdNew != acmIdOld && acmIdNew * acmIdOld != 0)
                 {
+                    int newStateAcm;
+
+                    if (petUpdate.PetHeaulthState == 2)
+                    {
+                        newStateAcm = 2;
+                    }
+                    else
+                    {
+                        newStateAcm = 1;
+                    }
+
+                    //set state accommodation
+                    await SetAccommodationValuesAsync(acmIdNew, newStateAcm, petId);
+
                     //reset state to old accommodation ( free - value 0)
                     await SetAccommodationValuesAsync(acmIdOld, 0, 0);
-                    //set state to new accommodation (busy - value 1)
-                    await SetAccommodationValuesAsync(acmIdNew, 1, petId);
-                }
-                //check if health condition is "recovered" (value 2)
-                if (petUpdate.PetHeaulthState == 2)
-                {
-                    //set accommodation state to "waiting owner" ( value 2)
-                    await SetAccommodationValuesAsync(petUpdate.AccommodationId, 2, petId);
                 }
                 else
-                {   
-                    await SetAccommodationValuesAsync(petUpdate.AccommodationId, 1, petId);
+                {
+                    //check if health condition is "recovered" (value 2)
+                    if (petUpdate.PetHeaulthState == 2)
+                    {
+                        //set accommodation state to "waiting owner" ( value 2)
+                        await SetAccommodationValuesAsync(acmIdNew, 2, petId);
+                    }
+                    else
+                    {
+                        await SetAccommodationValuesAsync(acmIdNew, 1, petId);
+                    }
                 }
+
 
                 //update pet
                 _repo.Update(petUpdate);
@@ -163,7 +181,7 @@ namespace WebAPI_Petshop.Controllers
             return BadRequest("Erro não esperado!");
         }
 
-        
+
 
     }
 }

@@ -10,7 +10,7 @@ export class NavComponent implements OnInit {
   
   
 
-  title = 'Petshop';
+  title = 'Petshop Atlântico';
   showFiller = false;
 
   constructor() { }
