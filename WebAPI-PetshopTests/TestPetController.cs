@@ -13,7 +13,7 @@ namespace WebAPI_PetshopTests
     public class TestPetController
     {
         
-        //
+        
         private readonly IRepository _repoTests;
 
         public TestPetController(IRepository repo)
@@ -58,6 +58,6 @@ namespace WebAPI_PetshopTests
 
             return (Task<Pets[]>)_repoTests;
         }
-        //*/
+        
     }
 }
