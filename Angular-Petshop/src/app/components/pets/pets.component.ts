@@ -13,6 +13,7 @@ export class PetsComponent implements OnInit {
 
   public title = 'Pets'
   public petSelected: Pet;
+  public petSelectedToInfo: Pet;
   public petForm: FormGroup;
   public modalRef: BsModalRef;
   public mode: string;  

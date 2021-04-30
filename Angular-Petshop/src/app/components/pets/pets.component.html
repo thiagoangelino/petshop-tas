@@ -129,7 +129,7 @@
         <td>{{pet.accommodationId}}</td>
         <td>
           <div class="btn-group">
-            <button (click)="openModal(infoPet)" class="btn btn-sm btn-outline-success">Info</button>
+            <button (click)="petSelectedToInfo = pet; openModal(infoPet)" class="btn btn-sm btn-outline-success">+ Info</button>
             <button (click)="petToEdit = pet.petId; petAcmId = pet.accommodationId;
                               selectPet(pet)" class="btn btn-sm btn-outline-primary">Editar</button>
             <button (click)=" petToRemove = pet.petId; openModalConfirm(modalConfirm)" 
@@ -170,5 +170,5 @@
 </ng-template>
 
 <ng-template #infoPet>
-    <app-pet></app-pet>
+    <app-pet [pet]="petSelectedToInfo"></app-pet>
 </ng-template>
