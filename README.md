@@ -1,4 +1,4 @@
-# Petshop tas
+# Petshop tas2
 Front-end: Angular/ Back-end: dotNet Core (3.1)/ DB: SQLite
 
 Para executar o projeto, você deverá ter instalado:
