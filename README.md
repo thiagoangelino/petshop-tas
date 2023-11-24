@@ -42,7 +42,7 @@ ng serve
 
 Para acessar a aplicação, acesse http://localhost:4200/ em um navegador Web de sua escolha.
 
-<a class="reff_f" id="reff_f">...</a>
+<a class="ref" id="ref">...</a>
     
     
     
